@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+}
+
+sourceCompatibility = 1.11
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Problem4',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.jstone.sfs.Problem4.Problem4'
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.16'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    afterTest { desc, result -> 
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}

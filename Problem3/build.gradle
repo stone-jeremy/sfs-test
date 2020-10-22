@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+    
+    // Bundle Apache Commons IO in the final JAR. This isn't how we would normally handle JAR dependencies, but it's convenient for present purposes.
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+sourceCompatibility = 1.11
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Problem3',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.jstone.sfs.Problem3.Problem3'
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.16'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    afterTest { desc, result -> 
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
