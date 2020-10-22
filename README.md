@@ -1,6 +1,6 @@
 ## Java problem responses
 
-I've chosen problems 2 and 4. For build and execution instructions, please visit the two project directories.
+I've chosen problems 3 and 4. For build and execution instructions, please visit the two project directories.
 
 ## Note on sequence data
 
